@@ -53,5 +53,23 @@ d3.json("samples.json").then((data) => {
 
     Plotly.newPlot("bar", data1, layout);
 
+
+    var trace2 = {
+        x: samples[dataChoice].otu_ids,
+        y: samples[dataChoice].sample_values,
+        mode: 'markers',
+        marker: {
+        size: samples[dataChoice].sample_values
+        }
+      };
+      
+      var data2 = [trace2];
+      
+      var layout2 = {
+        title: 'Marker Size',
+        showlegend: false,
+      };
+      
+      Plotly.newPlot('bubble', data2, layout2);
   });
 }
