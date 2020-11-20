@@ -1,8 +1,4 @@
-//allow user to choose from dropdown
-
-//select value from dropdown
-
-//select data from json based on dropdown value
+//fill the dropdown menu
 
 d3.json("samples.json").then((data) => {
     var i;
@@ -17,17 +13,17 @@ d3.json("samples.json").then((data) => {
 });
 
 
-
+//everything that happens after a new dataset is chosen
 function optionChanged() {
 
 idChoice = d3.select("#selDataset").node().value;
 
-
+//read the json
 d3.json("samples.json").then((data) => {
 
     samples = data.samples;
     metas = data.metadata;
-
+//search for selected dataset
     var dataChoice
     var samp;
     for (samp = 0; samp < samples.length; samp++) {
@@ -37,7 +33,7 @@ d3.json("samples.json").then((data) => {
     }
 
     console.log(dataChoice);
-
+//create bar trace
     var trace1 = {
         x: samples[dataChoice].otu_ids.toString(),
         y: samples[dataChoice].sample_values,
@@ -52,15 +48,15 @@ d3.json("samples.json").then((data) => {
         xaxis: { title: "Bacteria ID" },
         yaxis: { title: "Number of Bacteria" }
     };
-
+//plot bar
     Plotly.newPlot("bar", data1, layout);
 
-
+//create bubble trace
     var trace2 = {
         x: samples[dataChoice].otu_ids,
         y: samples[dataChoice].sample_values,
         text: samples[dataChoice].otu_labels,
-        color: samples[dataChoice].otu_ids,
+        color: samples[dataChoice].sample_values,
         mode: 'markers',
         marker: {
         size: samples[dataChoice].sample_values
@@ -73,9 +69,9 @@ d3.json("samples.json").then((data) => {
         title: 'Marker Size',
         showlegend: false,
       };
-      
+      //plot bubble
       Plotly.newPlot('bubble', data2, layout2);
-
+//find metadata for selection
       var meta;
         for (meta = 0; meta < metas.length; meta++) {
             if (metas[meta].id.toString() === idChoice) {
