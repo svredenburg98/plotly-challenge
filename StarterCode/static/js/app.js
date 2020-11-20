@@ -66,7 +66,7 @@ d3.json("samples.json").then((data) => {
       var data2 = [trace2];
       
       var layout2 = {
-        title: 'Marker Size',
+        title: 'Bacteria in Sample',
         showlegend: false,
       };
       //plot bubble
