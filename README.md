@@ -1,1 +1,3 @@
 # plotly-challenge
+
+In this program, I created a webpage that could display charts based on bacteria data in JSON format. I first looped through all of the sample IDs and added them to a drop-down menu from which a user could select a sample to investigate. I then created a larger loop which took the users input, found the matching sample data and created a bar and bubble chart to show the most common bacterias. I then used a similar loop to find the sample ID in the metadata section, and displayed the demographic information of the person providing a sample. This information was appended to a card on the html page, and would have to be overwritten each time the user selected a new id. 
